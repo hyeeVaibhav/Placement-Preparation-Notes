@@ -38,7 +38,6 @@ Placement-Preparation-Notes/
 ├── 📁 OOPs/
 ├── 📁 SQL/
 ├── 📁 Aptitude/
-├── 📁 InterviewQuestions/
 └── README.md
 ```
 
