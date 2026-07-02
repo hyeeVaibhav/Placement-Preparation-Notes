@@ -1,0 +1,2709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Java Programs &amp; DSA Question Bank</title>
+<style>
+* { box-sizing: border-box; }
+:root {
+  --blue:#3b6fd6; --green:#1a9e63; --amber:#d98a1c; --red:#d6485a; --purple:#8955d6;
+}
+body {
+  margin:0; font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  color:#26303d; background:#fbfcfe;
+}
+h1,h2,h3 { font-family: 'Segoe UI Semibold','Segoe UI', Arial, sans-serif; }
+
+/* ---------------- Nav ---------------- */
+.topnav {
+  position:sticky; top:0; z-index:50; display:flex; justify-content:space-between; align-items:center;
+  background:rgba(251,252,254,0.92); backdrop-filter:blur(6px);
+  border-bottom:1px solid #e7ecf3; padding:10px 24px;
+}
+.nav-brand { font-weight:700; color:#16233e; font-size:15px; }
+.nav-links a {
+  margin-left:18px; text-decoration:none; color:#3b6fd6; font-weight:600; font-size:13.5px;
+}
+.nav-links a:hover { text-decoration:underline; }
+
+/* ---------------- Cover ---------------- */
+.cover { position:relative; overflow:hidden; padding:60px 24px 50px 24px; text-align:center; }
+.blob { position:absolute; border-radius:50%; opacity:0.55; z-index:0; pointer-events:none; }
+.blob1 { width:420px; height:420px; top:-160px; right:-140px; background:radial-gradient(circle at 30% 30%, #dbeafe, #eef4ff 70%); }
+.blob2 { width:320px; height:320px; bottom:-140px; left:-120px; background:radial-gradient(circle at 60% 40%, #e9f9f0, #f4fdf8 70%); }
+.cover-inner { position:relative; z-index:2; max-width:620px; margin:0 auto; }
+.cover-kicker { font-weight:700; font-size:12px; letter-spacing:3px; color:#3b6fd6; margin-bottom:14px; }
+.cover-title { font-weight:800; font-size:34px; line-height:1.3; color:#16233e; margin:0 0 16px 0; }
+.cover-rule { width:70px; height:4px; background:#3b6fd6; border-radius:4px; margin:0 auto 28px auto; }
+.benefit-grid { display:flex; flex-direction:column; gap:10px; text-align:left; margin:0 auto 28px auto; }
+.benefit {
+  background:#ffffff; border:1px solid #e7ecf3; border-radius:10px; padding:12px 16px;
+  font-size:15px; color:#33415a; box-shadow:0 1px 6px rgba(30,50,90,0.06);
+}
+.cover-author { font-weight:700; font-size:16px; color:#16233e; margin-bottom:12px; }
+.cover-cta {
+  display:inline-block; font-weight:600; font-size:14px; color:#8a5b00; background:#fff6df;
+  border:1px dashed #e3b64c; padding:10px 24px; border-radius:30px;
+}
+
+/* ---------------- Sections ---------------- */
+.section { max-width:1100px; margin:0 auto; padding:34px 24px 10px 24px; }
+.section-head { margin-bottom:20px; }
+.section-head p { color:#5b6b83; font-size:14.5px; margin:10px 2px 0 2px; max-width:640px; }
+.section-chip {
+  display:inline-block; font-weight:700; font-size:12.5px; letter-spacing:0.5px;
+  padding:7px 16px; border-radius:30px; color:#fff;
+}
+.java-chip { background:var(--blue); }
+.easy-chip { background:var(--green); }
+.medium-chip { background:var(--amber); }
+.hard-chip { background:var(--red); }
+
+/* ---------------- Java cards ---------------- */
+.jgrid { display:grid; grid-template-columns:repeat(auto-fit, minmax(360px,1fr)); gap:20px; padding-bottom:20px; }
+.jcard {
+  background:#ffffff; border:1px solid #e7ecf3; border-left:4px solid var(--blue); border-radius:12px;
+  padding:18px 20px; box-shadow:0 1px 8px rgba(30,50,90,0.06);
+}
+.jcard-title { font-weight:700; font-size:16.5px; color:#16233e; margin-bottom:10px; }
+.jsection { margin-bottom:9px; }
+.jlabel { font-weight:700; font-size:11px; letter-spacing:0.6px; text-transform:uppercase; color:var(--blue); margin-bottom:3px; }
+.jbody { font-size:14px; color:#3a4658; line-height:1.5; }
+.jalgo { margin:0; padding-left:18px; font-size:13.5px; color:#3a4658; line-height:1.55; }
+.jalgo li { margin-bottom:2px; }
+.jcode {
+  font-family:'Consolas','Courier New', monospace; font-size:12px; line-height:1.5; color:#1a2130;
+  background:#f4f6fa; border-radius:8px; padding:12px 14px; white-space:pre-wrap; word-wrap:break-word;
+  overflow-x:auto; margin:0 0 9px 0;
+}
+.jiobox {
+  display:flex; justify-content:space-between; gap:10px; font-size:13px; color:#20406b;
+  background:#eef4ff; border-radius:8px; padding:9px 14px; margin-bottom:9px; flex-wrap:wrap;
+}
+.jcomplexity { display:flex; justify-content:space-between; font-size:12.5px; color:#5b6b83; margin-bottom:10px; }
+.jnote { border:1px dashed var(--green); border-radius:8px; background:#f1faf5; padding:10px 14px; }
+.jnote-label { font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:0.6px; color:var(--green); margin-bottom:4px; }
+.jnote-body { margin:0; padding-left:16px; font-size:12.8px; color:#245c40; line-height:1.5; }
+
+/* ---------------- DSA cards ---------------- */
+.dgrid { display:grid; grid-template-columns:repeat(auto-fit, minmax(320px,1fr)); gap:18px; padding-bottom:24px; }
+.dcard {
+  background:#ffffff; border:1px solid #e7ecf3; border-left:4px solid #999; border-radius:12px;
+  padding:16px 18px; box-shadow:0 1px 8px rgba(30,50,90,0.06); display:flex; flex-direction:column;
+}
+.dcard.easy { border-left-color:var(--green); }
+.dcard.medium { border-left-color:var(--amber); }
+.dcard.hard { border-left-color:var(--red); }
+.dcard-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:2px; }
+.dtitle { font-weight:700; font-size:15.5px; color:#16233e; }
+.freq { display:inline-flex; gap:3px; }
+.dot { width:7px; height:7px; border-radius:50%; background:#dfe4ec; display:inline-block; }
+.dot.on { background:var(--blue); }
+.dcompanies { font-size:12.5px; color:#8592a6; font-style:italic; margin-bottom:10px; }
+.dblock { margin-bottom:10px; }
+.dblock p { margin:3px 0 0 0; font-size:13.3px; color:#3a4658; line-height:1.5; }
+.dlabel { font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:0.6px; color:#5b6b83; }
+
+/* ---- Hint spoiler: hidden until hover / tap / focus ---- */
+.hint-wrap {
+  position:relative; margin-top:auto; border-radius:8px; cursor:pointer; user-select:none;
+  border:1.4px dashed var(--purple); background:#f7f3fc; overflow:hidden; outline:none;
+}
+.hint-flag {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:8px 12px; transition:opacity .15s ease;
+}
+.hint-flag-label { font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:0.6px; color:var(--purple); }
+.hint-flag-cta { font-size:11px; color:#9c8ab8; font-style:italic; }
+.hint-text {
+  max-height:0; opacity:0; padding:0 12px; font-size:13px; color:#4a3a70; line-height:1.5;
+  transition:max-height .25s ease, opacity .2s ease, padding .25s ease;
+}
+.hint-wrap:hover .hint-text,
+.hint-wrap:focus .hint-text,
+.hint-wrap.revealed .hint-text {
+  max-height:220px; opacity:1; padding:0 12px 12px 12px;
+}
+.hint-wrap:hover .hint-flag-cta,
+.hint-wrap:focus .hint-flag-cta,
+.hint-wrap.revealed .hint-flag-cta { opacity:0; }
+
+/* ---------------- Footer ---------------- */
+.pagefoot { text-align:center; font-size:12.5px; color:#a3adc0; padding:26px 20px 40px 20px; }
+
+@media (max-width: 620px) {
+  .cover-title { font-size:26px; }
+  .nav-links a { margin-left:12px; font-size:12.5px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="nav-brand">Java + DSA Handbook</div>
+  <div class="nav-links">
+    <a href="#java">Java Programs</a>
+    <a href="#easy">Easy</a>
+    <a href="#medium">Medium</a>
+    <a href="#hard">Hard</a>
+  </div>
+</nav>
+
+<header class="cover">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="cover-inner">
+    <div class="cover-kicker">INTERVIEW PREP NOTES</div>
+    <h1 class="cover-title">Java Programs &amp; DSA Question Bank</h1>
+    <div class="cover-rule"></div>
+    <div class="benefit-grid">
+      <div class="benefit">&#10003; 26 core Java programs with full working code</div>
+      <div class="benefit">&#10003; 60 top DSA questions, sorted Easy &rarr; Hard</div>
+      <div class="benefit">&#10003; Real company tags, so you know what to expect</div>
+      <div class="benefit">&#10003; Hints are hidden &mdash; hover or tap to peek, only when you're stuck</div>
+    </div>
+    <div class="cover-author">Compiled by <b>Vaibhav Singh</b></div>
+    <div class="cover-cta">&#9733; If these notes help you, leave a star and come back for more &#9733;</div>
+  </div>
+</header>
+
+<section id="java" class="section">
+  <div class="section-head java-head">
+    <span class="section-chip java-chip">PART 1 &middot; JAVA PROGRAMS</span>
+    <p>26 must-know Java programs &mdash; algorithm, working code, sample run, and complexity.</p>
+  </div>
+  <div class="jgrid">
+    <div class="jcard" id="java-1">
+      <div class="jcard-title">1. Reverse a Number</div>
+      <div class="jsection">
+        <div class="jlabel">Question</div>
+        <div class="jbody">Write a program to reverse a given number.</div>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Algorithm</div>
+        <ol class="jalgo"><li>Read the number from the user.</li><li>Initialize rev = 0.</li><li>Extract the last digit using num % 10.</li><li>Add the digit to rev &rarr; rev = rev * 10 + digit.</li><li>Remove the last digit &rarr; num = num / 10.</li><li>Repeat steps 3 to 5 until num becomes 0.</li><li>Print rev.</li></ol>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Code</div>
+        <pre class="jcode">import java.util.*;
+public class ReverseNumber {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter any number : ");
+        int num = sc.nextInt();
+        int rev = 0, r;
+        while (num != 0) {
+            r = num % 10;
+            rev = rev * 10 + r;
+            num = num / 10;
+        }
+        System.out.println("Reverse : " + rev);
+    }
+}</pre>
+      </div>
+      <div class="jiobox">
+        <div><b>Input</b> &nbsp;12345</div>
+        <div><b>Output</b> 54321</div>
+      </div>
+      <div class="jcomplexity">
+        <span>Time: O(d) where d = number of digits</span><span>Space: O(1)</span>
+      </div>
+      <div class="jnote">
+        <div class="jnote-label">Note</div>
+        <ul class="jnote-body"><li>Any number obtained by reading the digits from right to left.</li><li>Works for positive integers; handle sign separately for negative numbers.</li></ul>
+      </div>
+    </div>
+    
+    <div class="jcard" id="java-2">
+      <div class="jcard-title">2. Palindrome Number</div>
+      <div class="jsection">
+        <div class="jlabel">Question</div>
+        <div class="jbody">Write a program to check whether a number is a palindrome or not.</div>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Algorithm</div>
+        <ol class="jalgo"><li>Read the number from the user.</li><li>Store the number in another variable (originalNumber).</li><li>Reverse the number (same logic as Program 1).</li><li>Compare originalNumber and the reversed value.</li><li>If equal &rarr; palindrome, else &rarr; not palindrome.</li></ol>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Code</div>
+        <pre class="jcode">import java.util.*;
+public class PalindromeNumber {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter any number : ");
+        int num = sc.nextInt();
+        int original = num;
+        int rev = 0, r;
+        while (num != 0) {
+            r = num % 10;
+            rev = rev * 10 + r;
+            num = num / 10;
+        }
+        if (original == rev)
+            System.out.println("Number is Palindrome");
+        else
+            System.out.println("Number is not Palindrome");
+    }
+}</pre>
+      </div>
+      <div class="jiobox">
+        <div><b>Input</b> &nbsp;121</div>
+        <div><b>Output</b> Number is Palindrome</div>
+      </div>
+      <div class="jcomplexity">
+        <span>Time: O(d) where d = number of digits</span><span>Space: O(1)</span>
+      </div>
+      <div class="jnote">
+        <div class="jnote-label">Note</div>
+        <ul class="jnote-body"><li>A number that reads the same forwards and backwards is a palindrome.</li><li>Examples: 121, 12321, 7, 1001.</li></ul>
+      </div>
+    </div>
+    
+    <div class="jcard" id="java-3">
+      <div class="jcard-title">3. Prime Number</div>
+      <div class="jsection">
+        <div class="jlabel">Question</div>
+        <div class="jbody">Write a program to check whether a number is prime or not.</div>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Algorithm</div>
+        <ol class="jalgo"><li>Read the number from the user.</li><li>If number &le; 1 &rarr; not prime.</li><li>Check divisibility from 2 up to sqrt(n).</li><li>If the number is divisible by any i, then it is not prime.</li><li>If not divisible by any i &rarr; prime.</li></ol>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Code</div>
+        <pre class="jcode">import java.util.*;
+public class PrimeNumber {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter any number : ");
+        int n = sc.nextInt();
+        boolean isPrime = true;
+        if (n &lt;= 1) {
+            isPrime = false;
+        } else {
+            for (int i = 2; i * i &lt;= n; i++) {
+                if (n % i == 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+        }
+        if (isPrime)
+            System.out.println(n + " is a Prime");
+        else
+            System.out.println(n + " is not a Prime");
+    }
+}</pre>
+      </div>
+      <div class="jiobox">
+        <div><b>Input</b> &nbsp;17</div>
+        <div><b>Output</b> 17 is a Prime</div>
+      </div>
+      <div class="jcomplexity">
+        <span>Time: O(&radic;n)</span><span>Space: O(1)</span>
+      </div>
+      <div class="jnote">
+        <div class="jnote-label">Note</div>
+        <ul class="jnote-body"><li>A prime number has exactly two factors: 1 and itself.</li><li>It is enough to test divisibility up to &radic;n.</li><li>Examples: 2, 3, 5, 7, 11, 13, 17.</li></ul>
+      </div>
+    </div>
+    
+    <div class="jcard" id="java-4">
+      <div class="jcard-title">4. Armstrong Number</div>
+      <div class="jsection">
+        <div class="jlabel">Question</div>
+        <div class="jbody">Write a program to check whether a number is an Armstrong number or not.</div>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Algorithm</div>
+        <ol class="jalgo"><li>Read the number from the user.</li><li>Count the total number of digits in the number.</li><li>For each digit, calculate (digit ^ count) and add it to sum.</li><li>If sum == original number &rarr; Armstrong, else &rarr; not Armstrong.</li></ol>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Code</div>
+        <pre class="jcode">import java.util.*;
+public class ArmstrongNumber {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter any number : ");
+        int n = sc.nextInt();
+        int temp = n, sum = 0, count = 0;
+        while (temp &gt; 0) {
+            temp = temp / 10;
+            count++;
+        }
+        temp = n;
+        while (temp &gt; 0) {
+            int digit = temp % 10;
+            sum = sum + (int) Math.pow(digit, count);
+            temp = temp / 10;
+        }
+        if (sum == n)
+            System.out.println(n + " is Armstrong number");
+        else
+            System.out.println(n + " is not Armstrong number");
+    }
+}</pre>
+      </div>
+      <div class="jiobox">
+        <div><b>Input</b> &nbsp;153</div>
+        <div><b>Output</b> 153 is Armstrong number</div>
+      </div>
+      <div class="jcomplexity">
+        <span>Time: O(d) where d = number of digits</span><span>Space: O(1)</span>
+      </div>
+      <div class="jnote">
+        <div class="jnote-label">Note</div>
+        <ul class="jnote-body"><li>An Armstrong number equals the sum of its own digits, each raised to the power of the total digit count.</li><li>Examples: 0, 1, 153, 370, 371, 407.</li></ul>
+      </div>
+    </div>
+    
+    <div class="jcard" id="java-5">
+      <div class="jcard-title">5. Odd or Even Number</div>
+      <div class="jsection">
+        <div class="jlabel">Question</div>
+        <div class="jbody">Write a program to check whether a number is odd or even.</div>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Algorithm</div>
+        <ol class="jalgo"><li>Read the number from the user.</li><li>If number % 2 == 0 &rarr; Even.</li><li>Else &rarr; Odd.</li><li>Print the result.</li></ol>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Code</div>
+        <pre class="jcode">import java.util.*;
+public class OddEven {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter any number : ");
+        int num = sc.nextInt();
+        if (num % 2 == 0)
+            System.out.println(num + " is Even");
+        else
+            System.out.println(num + " is Odd");
+    }
+}</pre>
+      </div>
+      <div class="jiobox">
+        <div><b>Input</b> &nbsp;24</div>
+        <div><b>Output</b> 24 is Even</div>
+      </div>
+      <div class="jcomplexity">
+        <span>Time: O(1)</span><span>Space: O(1)</span>
+      </div>
+      <div class="jnote">
+        <div class="jnote-label">Note</div>
+        <ul class="jnote-body"><li>If a number is exactly divisible by 2 it is Even, otherwise it is Odd.</li><li>By convention, 0 is treated as Even.</li></ul>
+      </div>
+    </div>
+    
+    <div class="jcard" id="java-6">
+      <div class="jcard-title">6. Swap Two Numbers without a Third Variable</div>
+      <div class="jsection">
+        <div class="jlabel">Question</div>
+        <div class="jbody">Write a program to swap two numbers without using a third variable.</div>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Algorithm</div>
+        <ol class="jalgo"><li>Read two numbers a and b.</li><li>Use arithmetic operations to swap: a = a + b, b = a - b, a = a - b.</li><li>Print the swapped numbers.</li></ol>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Code</div>
+        <pre class="jcode">import java.util.*;
+public class SwapNumbers {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter first number : ");
+        int a = sc.nextInt();
+        System.out.print("Enter second number : ");
+        int b = sc.nextInt();
+        a = a + b;   // Step 1
+        b = a - b;   // Step 2
+        a = a - b;   // Step 3
+        System.out.println("After swapping :");
+        System.out.println("a = " + a + ", b = " + b);
+    }
+}</pre>
+      </div>
+      <div class="jiobox">
+        <div><b>Input</b> &nbsp;a = 10, b = 25</div>
+        <div><b>Output</b> a = 25, b = 10</div>
+      </div>
+      <div class="jcomplexity">
+        <span>Time: O(1)</span><span>Space: O(1)</span>
+      </div>
+      <div class="jnote">
+        <div class="jnote-label">Note</div>
+        <ul class="jnote-body"><li>This arithmetic approach only works reliably for integers, and (a + b) may overflow for very large values.</li><li>A bitwise XOR swap is an alternative.</li></ul>
+      </div>
+    </div>
+    
+    <div class="jcard" id="java-7">
+      <div class="jcard-title">7. Fibonacci Series</div>
+      <div class="jsection">
+        <div class="jlabel">Question</div>
+        <div class="jbody">Write a program to print the Fibonacci series up to n terms.</div>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Algorithm</div>
+        <ol class="jalgo"><li>Read the number of terms n from the user.</li><li>Initialize first = 0, second = 1.</li><li>Print the first two terms.</li><li>For i = 3 to n: next = first + second, print next, first = second, second = next.</li><li>Repeat step 4 until i &gt; n.</li></ol>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Code</div>
+        <pre class="jcode">import java.util.*;
+public class FibonacciSeries {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of terms : ");
+        int n = sc.nextInt();
+        int first = 0, second = 1, next;
+        System.out.print(first + " " + second + " ");
+        for (int i = 3; i &lt;= n; i++) {
+            next = first + second;
+            System.out.print(next + " ");
+            first = second;
+            second = next;
+        }
+    }
+}</pre>
+      </div>
+      <div class="jiobox">
+        <div><b>Input</b> &nbsp;7</div>
+        <div><b>Output</b> 0 1 1 2 3 5 8</div>
+      </div>
+      <div class="jcomplexity">
+        <span>Time: O(n)</span><span>Space: O(1)</span>
+      </div>
+      <div class="jnote">
+        <div class="jnote-label">Note</div>
+        <ul class="jnote-body"><li>The Fibonacci series starts with 0 and 1.</li><li>Every following term is the sum of the previous two terms.</li></ul>
+      </div>
+    </div>
+    
+    <div class="jcard" id="java-8">
+      <div class="jcard-title">8. Factorial of a Number</div>
+      <div class="jsection">
+        <div class="jlabel">Question</div>
+        <div class="jbody">Write a program to find the factorial of a given number.</div>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Algorithm</div>
+        <ol class="jalgo"><li>Read the number n from the user.</li><li>Initialize fact = 1.</li><li>For i = 1 to n: fact = fact * i.</li><li>Print fact.</li></ol>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Code</div>
+        <pre class="jcode">import java.util.*;
+public class FactorialNumber {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number : ");
+        int n = sc.nextInt();
+        long fact = 1;
+        for (int i = 1; i &lt;= n; i++) {
+            fact = fact * i;
+        }
+        System.out.println("Factorial of " + n + " is " + fact);
+    }
+}</pre>
+      </div>
+      <div class="jiobox">
+        <div><b>Input</b> &nbsp;5</div>
+        <div><b>Output</b> Factorial of 5 is 120</div>
+      </div>
+      <div class="jcomplexity">
+        <span>Time: O(n)</span><span>Space: O(1)</span>
+      </div>
+      <div class="jnote">
+        <div class="jnote-label">Note</div>
+        <ul class="jnote-body"><li>The factorial of 0 is defined as 1.</li><li>Factorial values grow very quickly, so use long (or BigInteger) for larger inputs.</li></ul>
+      </div>
+    </div>
+    
+    <div class="jcard" id="java-9">
+      <div class="jcard-title">9. Sum of Digits of a Number</div>
+      <div class="jsection">
+        <div class="jlabel">Question</div>
+        <div class="jbody">Write a program to calculate the sum of digits of a number.</div>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Algorithm</div>
+        <ol class="jalgo"><li>Read the number from the user.</li><li>Initialize sum = 0.</li><li>Extract the last digit using num % 10.</li><li>Add the digit to sum &rarr; sum = sum + digit.</li><li>Remove the last digit &rarr; num = num / 10.</li><li>Repeat steps 3 to 5 until num becomes 0.</li><li>Print sum.</li></ol>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Code</div>
+        <pre class="jcode">import java.util.*;
+public class SumOfDigits {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter any number : ");
+        int num = sc.nextInt();
+        int sum = 0;
+        while (num &gt; 0) {
+            int digit = num % 10;
+            sum = sum + digit;
+            num = num / 10;
+        }
+        System.out.println("Sum of digits is : " + sum);
+    }
+}</pre>
+      </div>
+      <div class="jiobox">
+        <div><b>Input</b> &nbsp;12345</div>
+        <div><b>Output</b> 15</div>
+      </div>
+      <div class="jcomplexity">
+        <span>Time: O(d) where d = number of digits</span><span>Space: O(1)</span>
+      </div>
+      <div class="jnote">
+        <div class="jnote-label">Note</div>
+        <ul class="jnote-body"><li>Every digit is extracted with % 10 and the number is shrunk with / 10 until nothing remains.</li></ul>
+      </div>
+    </div>
+    
+    <div class="jcard" id="java-10">
+      <div class="jcard-title">10. Number of Digits in a Number</div>
+      <div class="jsection">
+        <div class="jlabel">Question</div>
+        <div class="jbody">Write a program to count the number of digits in a given number.</div>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Algorithm</div>
+        <ol class="jalgo"><li>Read the number from the user.</li><li>Initialize count = 0.</li><li>Divide the number by 10.</li><li>Increase count by 1.</li><li>Repeat steps 3 to 4 until num becomes 0.</li><li>Print count.</li></ol>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Code</div>
+        <pre class="jcode">import java.util.*;
+public class CountDigits {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter any number : ");
+        int num = sc.nextInt();
+        int count = 0;
+        while (num &gt; 0) {
+            num = num / 10;
+            count++;
+        }
+        System.out.println("Number of digits is : " + count);
+    }
+}</pre>
+      </div>
+      <div class="jiobox">
+        <div><b>Input</b> &nbsp;987654321</div>
+        <div><b>Output</b> 9</div>
+      </div>
+      <div class="jcomplexity">
+        <span>Time: O(d) where d = number of digits</span><span>Space: O(1)</span>
+      </div>
+      <div class="jnote">
+        <div class="jnote-label">Note</div>
+        <ul class="jnote-body"><li>Every division by 10 removes exactly one digit from the number, so counting the divisions counts the digits.</li></ul>
+      </div>
+    </div>
+    
+    <div class="jcard" id="java-11">
+      <div class="jcard-title">11. Reverse a String</div>
+      <div class="jsection">
+        <div class="jlabel">Question</div>
+        <div class="jbody">Write a program to reverse a given string.</div>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Algorithm</div>
+        <ol class="jalgo"><li>Read the string from the user.</li><li>Traverse the string from the end to the start.</li><li>Append each character to the result.</li><li>Print the reversed string.</li></ol>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Code</div>
+        <pre class="jcode">import java.util.*;
+public class ReverseString {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a string : ");
+        String str = sc.nextLine();
+        String rev = "";
+        for (int i = str.length() - 1; i &gt;= 0; i--) {
+            rev = rev + str.charAt(i);
+        }
+        System.out.println("Reversed String : " + rev);
+    }
+}</pre>
+      </div>
+      <div class="jiobox">
+        <div><b>Input</b> &nbsp;hello</div>
+        <div><b>Output</b> olleh</div>
+      </div>
+      <div class="jcomplexity">
+        <span>Time: O(n)</span><span>Space: O(n)</span>
+      </div>
+      <div class="jnote">
+        <div class="jnote-label">Note</div>
+        <ul class="jnote-body"><li>The string is traversed once from the last character to the first, building the reversed copy.</li></ul>
+      </div>
+    </div>
+    
+    <div class="jcard" id="java-12">
+      <div class="jcard-title">12. Reverse Each Word of a String</div>
+      <div class="jsection">
+        <div class="jlabel">Question</div>
+        <div class="jbody">Write a program to reverse each word of a given string.</div>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Algorithm</div>
+        <ol class="jalgo"><li>Read the string from the user.</li><li>Split the string into words.</li><li>Reverse each word individually.</li><li>Print the words in their reversed form.</li></ol>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Code</div>
+        <pre class="jcode">import java.util.*;
+public class ReverseEachWord {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a string : ");
+        String str = sc.nextLine();
+        String[] words = str.split(" ");
+        String result = "";
+        for (String word : words) {
+            String rev = "";
+            for (int i = word.length() - 1; i &gt;= 0; i--) {
+                rev = rev + word.charAt(i);
+            }
+            result = result + rev + " ";
+        }
+        System.out.println("Result : " + result.trim());
+    }
+}</pre>
+      </div>
+      <div class="jiobox">
+        <div><b>Input</b> &nbsp;Java is good</div>
+        <div><b>Output</b> avaJ si doog</div>
+      </div>
+      <div class="jcomplexity">
+        <span>Time: O(n)</span><span>Space: O(n)</span>
+      </div>
+      <div class="jnote">
+        <div class="jnote-label">Note</div>
+        <ul class="jnote-body"><li>The sentence is split into words first, and each word is reversed on its own before being reassembled.</li></ul>
+      </div>
+    </div>
+    
+    <div class="jcard" id="java-13">
+      <div class="jcard-title">13. String Palindrome</div>
+      <div class="jsection">
+        <div class="jlabel">Question</div>
+        <div class="jbody">Write a program to check whether a string is a palindrome or not.</div>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Algorithm</div>
+        <ol class="jalgo"><li>Read the string from the user.</li><li>Compare characters from the start and end, moving towards the centre.</li><li>If all characters match &rarr; palindrome.</li><li>Else &rarr; not palindrome.</li></ol>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Code</div>
+        <pre class="jcode">import java.util.*;
+public class StringPalindrome {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a string : ");
+        String str = sc.nextLine();
+        String rev = "";
+        for (int i = str.length() - 1; i &gt;= 0; i--) {
+            rev = rev + str.charAt(i);
+        }
+        if (str.equalsIgnoreCase(rev))
+            System.out.println("String is Palindrome");
+        else
+            System.out.println("String is not Palindrome");
+    }
+}</pre>
+      </div>
+      <div class="jiobox">
+        <div><b>Input</b> &nbsp;madam</div>
+        <div><b>Output</b> String is Palindrome</div>
+      </div>
+      <div class="jcomplexity">
+        <span>Time: O(n)</span><span>Space: O(n)</span>
+      </div>
+      <div class="jnote">
+        <div class="jnote-label">Note</div>
+        <ul class="jnote-body"><li>The string can also be compared without extra space using the two-pointer approach.</li><li>equalsIgnoreCase() ignores letter case.</li></ul>
+      </div>
+    </div>
+    
+    <div class="jcard" id="java-14">
+      <div class="jcard-title">14. Check Two Strings are Anagrams</div>
+      <div class="jsection">
+        <div class="jlabel">Question</div>
+        <div class="jbody">Write a program to check whether two strings are anagrams of each other.</div>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Algorithm</div>
+        <ol class="jalgo"><li>Read two strings from the user.</li><li>If their lengths are different &rarr; not an anagram.</li><li>Sort the characters of both strings.</li><li>If the sorted strings are equal &rarr; anagram.</li><li>Else &rarr; not an anagram.</li></ol>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Code</div>
+        <pre class="jcode">import java.util.*;
+public class AnagramString {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter first string : ");
+        String str1 = sc.nextLine();
+        System.out.print("Enter second string : ");
+        String str2 = sc.nextLine();
+        if (str1.length() != str2.length()) {
+            System.out.println("Not Anagrams");
+            return;
+        }
+        char[] ch1 = str1.toCharArray();
+        char[] ch2 = str2.toCharArray();
+        Arrays.sort(ch1);
+        Arrays.sort(ch2);
+        if (Arrays.equals(ch1, ch2))
+            System.out.println("Strings are Anagrams");
+        else
+            System.out.println("Strings are not Anagrams");
+    }
+}</pre>
+      </div>
+      <div class="jiobox">
+        <div><b>Input</b> &nbsp;listen   silent</div>
+        <div><b>Output</b> Strings are Anagrams</div>
+      </div>
+      <div class="jcomplexity">
+        <span>Time: O(n log n)</span><span>Space: O(n)</span>
+      </div>
+      <div class="jnote">
+        <div class="jnote-label">Note</div>
+        <ul class="jnote-body"><li>Two strings can only be anagrams if they have equal length.</li><li>Sorting both strings and comparing them is the most common approach.</li></ul>
+      </div>
+    </div>
+    
+    <div class="jcard" id="java-15">
+      <div class="jcard-title">15. Count Occurrence of a Character in a String</div>
+      <div class="jsection">
+        <div class="jlabel">Question</div>
+        <div class="jbody">Write a program to count the occurrence of a given character in a string.</div>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Algorithm</div>
+        <ol class="jalgo"><li>Read the string and the character from the user.</li><li>Initialize count = 0.</li><li>Traverse the string.</li><li>If the character matches, increment count.</li><li>Print count.</li></ol>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Code</div>
+        <pre class="jcode">import java.util.*;
+public class CountChar {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a string : ");
+        String str = sc.nextLine();
+        System.out.print("Enter a character : ");
+        char ch = sc.next().charAt(0);
+        int count = 0;
+        for (int i = 0; i &lt; str.length(); i++) {
+            if (str.charAt(i) == ch) {
+                count++;
+            }
+        }
+        System.out.println("Occurrence of '" + ch + "' is : " + count);
+    }
+}</pre>
+      </div>
+      <div class="jiobox">
+        <div><b>Input</b> &nbsp;Hello World , o</div>
+        <div><b>Output</b> 2</div>
+      </div>
+      <div class="jcomplexity">
+        <span>Time: O(n)</span><span>Space: O(1)</span>
+      </div>
+      <div class="jnote">
+        <div class="jnote-label">Note</div>
+        <ul class="jnote-body"><li>The string is traversed once, comparing every character against the given character.</li></ul>
+      </div>
+    </div>
+    
+    <div class="jcard" id="java-16">
+      <div class="jcard-title">16. Count Number of Words in a String</div>
+      <div class="jsection">
+        <div class="jlabel">Question</div>
+        <div class="jbody">Write a program to count the number of words in a string.</div>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Algorithm</div>
+        <ol class="jalgo"><li>Read the string from the user.</li><li>Trim the leading and trailing spaces.</li><li>Split the string by one or more spaces.</li><li>Count the words.</li><li>Print count.</li></ol>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Code</div>
+        <pre class="jcode">import java.util.*;
+public class CountWords {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a string : ");
+        String str = sc.nextLine().trim();
+        if (str.length() == 0) {
+            System.out.println("No words");
+            return;
+        }
+        String[] words = str.split("\\s+");   // one or more spaces
+        int count = words.length;
+        System.out.println("Number of words : " + count);
+    }
+}</pre>
+      </div>
+      <div class="jiobox">
+        <div><b>Input</b> &nbsp;Java is awesome</div>
+        <div><b>Output</b> 3</div>
+      </div>
+      <div class="jcomplexity">
+        <span>Time: O(n)</span><span>Space: O(n)</span>
+      </div>
+      <div class="jnote">
+        <div class="jnote-label">Note</div>
+        <ul class="jnote-body"><li>trim() removes extra spaces at the start and end.</li><li>split("\\s+") splits on one or more whitespace characters.</li></ul>
+      </div>
+    </div>
+    
+    <div class="jcard" id="java-17">
+      <div class="jcard-title">17. Find LCM of Two Numbers</div>
+      <div class="jsection">
+        <div class="jlabel">Question</div>
+        <div class="jbody">Write a program to find the LCM of two numbers.</div>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Algorithm</div>
+        <ol class="jalgo"><li>Read two numbers a and b.</li><li>Find the greater number.</li><li>Initialize lcm = greater.</li><li>While (true): if (lcm % a == 0 && lcm % b == 0) break; else lcm++.</li><li>Print lcm.</li></ol>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Code</div>
+        <pre class="jcode">import java.util.*;
+public class LCM {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter first number : ");
+        int a = sc.nextInt();
+        System.out.print("Enter second number : ");
+        int b = sc.nextInt();
+        int greater = (a &gt; b) ? a : b;
+        int lcm = greater;
+        while (true) {
+            if (lcm % a == 0 &amp;&amp; lcm % b == 0)
+                break;
+            lcm++;
+        }
+        System.out.println("LCM is : " + lcm);
+    }
+}</pre>
+      </div>
+      <div class="jiobox">
+        <div><b>Input</b> &nbsp;12 18</div>
+        <div><b>Output</b> 36</div>
+      </div>
+      <div class="jcomplexity">
+        <span>Time: O(n)</span><span>Space: O(1)</span>
+      </div>
+      <div class="jnote">
+        <div class="jnote-label">Note</div>
+        <ul class="jnote-body"><li>LCM can also be calculated efficiently as LCM(a, b) = (a * b) / GCD(a, b).</li></ul>
+      </div>
+    </div>
+    
+    <div class="jcard" id="java-18">
+      <div class="jcard-title">18. Find HCF (GCD) of Two Numbers</div>
+      <div class="jsection">
+        <div class="jlabel">Question</div>
+        <div class="jbody">Write a program to find the HCF (GCD) of two numbers.</div>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Algorithm</div>
+        <ol class="jalgo"><li>Read two numbers a and b.</li><li>While (b != 0): rem = a % b, a = b, b = rem.</li><li>Print a (which is the HCF).</li></ol>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Code</div>
+        <pre class="jcode">import java.util.*;
+public class HCF {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter first number : ");
+        int a = sc.nextInt();
+        System.out.print("Enter second number : ");
+        int b = sc.nextInt();
+        while (b != 0) {
+            int rem = a % b;
+            a = b;
+            b = rem;
+        }
+        System.out.println("HCF (GCD) is : " + a);
+    }
+}</pre>
+      </div>
+      <div class="jiobox">
+        <div><b>Input</b> &nbsp;48 18</div>
+        <div><b>Output</b> 6</div>
+      </div>
+      <div class="jcomplexity">
+        <span>Time: O(log n)</span><span>Space: O(1)</span>
+      </div>
+      <div class="jnote">
+        <div class="jnote-label">Note</div>
+        <ul class="jnote-body"><li>This is the Euclidean Algorithm.</li><li>It is very efficient even for large numbers.</li></ul>
+      </div>
+    </div>
+    
+    <div class="jcard" id="java-19">
+      <div class="jcard-title">19. Bubble Sort</div>
+      <div class="jsection">
+        <div class="jlabel">Question</div>
+        <div class="jbody">Write a program to sort an array of numbers using Bubble Sort.</div>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Algorithm</div>
+        <ol class="jalgo"><li>Read the array from the user.</li><li>For i = 0 to n-2, for j = 0 to n-i-2:</li><li>If arr[j] &gt; arr[j+1], swap arr[j] and arr[j+1].</li><li>After each outer pass the largest remaining element settles at the end.</li><li>Print the sorted array.</li></ol>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Code</div>
+        <pre class="jcode">import java.util.*;
+public class BubbleSort {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of elements : ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i &lt; n; i++) arr[i] = sc.nextInt();
+        for (int i = 0; i &lt; n - 1; i++) {
+            for (int j = 0; j &lt; n - i - 1; j++) {
+                if (arr[j] &gt; arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+        System.out.println("Sorted array : " + Arrays.toString(arr));
+    }
+}</pre>
+      </div>
+      <div class="jiobox">
+        <div><b>Input</b> &nbsp;5\n5 1 4 2 8</div>
+        <div><b>Output</b> [1, 2, 4, 5, 8]</div>
+      </div>
+      <div class="jcomplexity">
+        <span>Time: O(n&sup2;)</span><span>Space: O(1)</span>
+      </div>
+      <div class="jnote">
+        <div class="jnote-label">Note</div>
+        <ul class="jnote-body"><li>Bubble Sort repeatedly swaps adjacent out-of-order elements.</li><li>Simple to explain, but not efficient for large arrays.</li></ul>
+      </div>
+    </div>
+    
+    <div class="jcard" id="java-20">
+      <div class="jcard-title">20. Binary Search</div>
+      <div class="jsection">
+        <div class="jlabel">Question</div>
+        <div class="jbody">Write a program to search an element in a sorted array using Binary Search.</div>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Algorithm</div>
+        <ol class="jalgo"><li>Read a sorted array and the key to search.</li><li>Set low = 0 and high = n - 1.</li><li>While low &le; high: find mid = (low + high) / 2.</li><li>If arr[mid] == key, element found.</li><li>If arr[mid] &lt; key, search the right half, else search the left half.</li></ol>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Code</div>
+        <pre class="jcode">import java.util.*;
+public class BinarySearch {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of elements : ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i &lt; n; i++) arr[i] = sc.nextInt();
+        System.out.print("Enter element to search : ");
+        int key = sc.nextInt();
+        int low = 0, high = n - 1, result = -1;
+        while (low &lt;= high) {
+            int mid = (low + high) / 2;
+            if (arr[mid] == key) { result = mid; break; }
+            else if (arr[mid] &lt; key) low = mid + 1;
+            else high = mid - 1;
+        }
+        if (result != -1)
+            System.out.println("Element found at index : " + result);
+        else
+            System.out.println("Element not found");
+    }
+}</pre>
+      </div>
+      <div class="jiobox">
+        <div><b>Input</b> &nbsp;6\n2 4 6 8 10 12, key = 10</div>
+        <div><b>Output</b> Element found at index : 4</div>
+      </div>
+      <div class="jcomplexity">
+        <span>Time: O(log n)</span><span>Space: O(1)</span>
+      </div>
+      <div class="jnote">
+        <div class="jnote-label">Note</div>
+        <ul class="jnote-body"><li>Binary Search only works on a sorted array.</li><li>It halves the search space on every comparison, which is why it is much faster than a linear scan.</li></ul>
+      </div>
+    </div>
+    
+    <div class="jcard" id="java-21">
+      <div class="jcard-title">21. Second Largest Number in an Array</div>
+      <div class="jsection">
+        <div class="jlabel">Question</div>
+        <div class="jbody">Write a program to find the second largest number in an array.</div>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Algorithm</div>
+        <ol class="jalgo"><li>Read the array from the user.</li><li>Initialize largest and secondLargest to the smallest possible value.</li><li>Traverse the array; if element &gt; largest, update secondLargest = largest, largest = element.</li><li>Else if element &gt; secondLargest and element != largest, update secondLargest.</li><li>Print secondLargest.</li></ol>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Code</div>
+        <pre class="jcode">import java.util.*;
+public class SecondLargest {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of elements : ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i &lt; n; i++) arr[i] = sc.nextInt();
+        int largest = Integer.MIN_VALUE, second = Integer.MIN_VALUE;
+        for (int num : arr) {
+            if (num &gt; largest) {
+                second = largest;
+                largest = num;
+            } else if (num &gt; second &amp;&amp; num != largest) {
+                second = num;
+            }
+        }
+        System.out.println("Second largest number is : " + second);
+    }
+}</pre>
+      </div>
+      <div class="jiobox">
+        <div><b>Input</b> &nbsp;5\n12 35 1 10 34</div>
+        <div><b>Output</b> Second largest number is : 34</div>
+      </div>
+      <div class="jcomplexity">
+        <span>Time: O(n)</span><span>Space: O(1)</span>
+      </div>
+      <div class="jnote">
+        <div class="jnote-label">Note</div>
+        <ul class="jnote-body"><li>The array is traversed only once, tracking both the largest and second largest values together instead of sorting the whole array.</li></ul>
+      </div>
+    </div>
+    
+    <div class="jcard" id="java-22">
+      <div class="jcard-title">22. Remove Duplicate Elements from an Array</div>
+      <div class="jsection">
+        <div class="jlabel">Question</div>
+        <div class="jbody">Write a program to remove duplicate elements from an array.</div>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Algorithm</div>
+        <ol class="jalgo"><li>Read the array from the user.</li><li>Use a LinkedHashSet to preserve insertion order while removing duplicates.</li><li>Add every array element to the set.</li><li>Print the elements of the set.</li></ol>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Code</div>
+        <pre class="jcode">import java.util.*;
+public class RemoveDuplicates {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of elements : ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i &lt; n; i++) arr[i] = sc.nextInt();
+        LinkedHashSet&lt;Integer&gt; set = new LinkedHashSet&lt;&gt;();
+        for (int num : arr) set.add(num);
+        System.out.println("Array after removing duplicates : " + set);
+    }
+}</pre>
+      </div>
+      <div class="jiobox">
+        <div><b>Input</b> &nbsp;7\n1 2 2 3 4 4 5</div>
+        <div><b>Output</b> [1, 2, 3, 4, 5]</div>
+      </div>
+      <div class="jcomplexity">
+        <span>Time: O(n)</span><span>Space: O(n)</span>
+      </div>
+      <div class="jnote">
+        <div class="jnote-label">Note</div>
+        <ul class="jnote-body"><li>A LinkedHashSet automatically discards duplicate values while keeping the original insertion order intact.</li></ul>
+      </div>
+    </div>
+    
+    <div class="jcard" id="java-23">
+      <div class="jcard-title">23. Check Perfect Number</div>
+      <div class="jsection">
+        <div class="jlabel">Question</div>
+        <div class="jbody">Write a program to check whether a number is a Perfect number or not.</div>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Algorithm</div>
+        <ol class="jalgo"><li>Read the number from the user.</li><li>Initialize sum = 0.</li><li>For i = 1 to n/2, if n % i == 0, add i to sum.</li><li>If sum == n &rarr; Perfect number, else &rarr; not Perfect.</li></ol>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Code</div>
+        <pre class="jcode">import java.util.*;
+public class PerfectNumber {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter any number : ");
+        int n = sc.nextInt();
+        int sum = 0;
+        for (int i = 1; i &lt;= n / 2; i++) {
+            if (n % i == 0) {
+                sum = sum + i;
+            }
+        }
+        if (sum == n)
+            System.out.println(n + " is a Perfect number");
+        else
+            System.out.println(n + " is not a Perfect number");
+    }
+}</pre>
+      </div>
+      <div class="jiobox">
+        <div><b>Input</b> &nbsp;28</div>
+        <div><b>Output</b> 28 is a Perfect number</div>
+      </div>
+      <div class="jcomplexity">
+        <span>Time: O(n)</span><span>Space: O(1)</span>
+      </div>
+      <div class="jnote">
+        <div class="jnote-label">Note</div>
+        <ul class="jnote-body"><li>A Perfect number equals the sum of its proper divisors (excluding itself).</li><li>Examples: 6, 28, 496, 8128.</li></ul>
+      </div>
+    </div>
+    
+    <div class="jcard" id="java-24">
+      <div class="jcard-title">24. Multiply Two Matrices</div>
+      <div class="jsection">
+        <div class="jlabel">Question</div>
+        <div class="jbody">Write a program to multiply two matrices.</div>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Algorithm</div>
+        <ol class="jalgo"><li>Read the dimensions and elements of matrix A and matrix B.</li><li>Check that the number of columns of A equals the number of rows of B.</li><li>For every result cell [i][j], sum the products of the matching row of A and column of B.</li><li>Store the sum in the result matrix.</li><li>Print the result matrix.</li></ol>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Code</div>
+        <pre class="jcode">import java.util.*;
+public class MatrixMultiplication {
+    public static void main(String[] args) {
+        int[][] a = {{1, 2}, {3, 4}};
+        int[][] b = {{5, 6}, {7, 8}};
+        int rowsA = a.length, colsA = a[0].length, colsB = b[0].length;
+        int[][] result = new int[rowsA][colsB];
+        for (int i = 0; i &lt; rowsA; i++) {
+            for (int j = 0; j &lt; colsB; j++) {
+                for (int k = 0; k &lt; colsA; k++) {
+                    result[i][j] += a[i][k] * b[k][j];
+                }
+            }
+        }
+        System.out.println("Resultant Matrix :");
+        for (int[] row : result) {
+            System.out.println(Arrays.toString(row));
+        }
+    }
+}</pre>
+      </div>
+      <div class="jiobox">
+        <div><b>Input</b> &nbsp;A = {{1,2},{3,4}}, B = {{5,6},{7,8}}</div>
+        <div><b>Output</b> [19, 22]  [43, 50]</div>
+      </div>
+      <div class="jcomplexity">
+        <span>Time: O(n&sup3;) for n x n matrices</span><span>Space: O(n&sup2;)</span>
+      </div>
+      <div class="jnote">
+        <div class="jnote-label">Note</div>
+        <ul class="jnote-body"><li>Matrix multiplication needs three nested loops.</li><li>The number of columns in the first matrix must equal the number of rows in the second.</li></ul>
+      </div>
+    </div>
+    
+    <div class="jcard" id="java-25">
+      <div class="jcard-title">25. Find Duplicate Characters in a String</div>
+      <div class="jsection">
+        <div class="jlabel">Question</div>
+        <div class="jbody">Write a program to find duplicate characters and their count in a given string.</div>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Algorithm</div>
+        <ol class="jalgo"><li>Read the string from the user.</li><li>Create a HashMap to store each character and its frequency.</li><li>Traverse the string and update the count for every character.</li><li>Print only the characters whose count is greater than 1.</li></ol>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Code</div>
+        <pre class="jcode">import java.util.*;
+public class DuplicateCharacters {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a string : ");
+        String str = sc.nextLine();
+        HashMap&lt;Character, Integer&gt; map = new HashMap&lt;&gt;();
+        for (char ch : str.toCharArray()) {
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
+        }
+        System.out.println("Duplicate characters :");
+        for (Map.Entry&lt;Character, Integer&gt; entry : map.entrySet()) {
+            if (entry.getValue() &gt; 1) {
+                System.out.println(entry.getKey() + " : " + entry.getValue());
+            }
+        }
+    }
+}</pre>
+      </div>
+      <div class="jiobox">
+        <div><b>Input</b> &nbsp;Better Butter</div>
+        <div><b>Output</b> t : 4, e : 3, r : 2, B : 2</div>
+      </div>
+      <div class="jcomplexity">
+        <span>Time: O(n)</span><span>Space: O(n)</span>
+      </div>
+      <div class="jnote">
+        <div class="jnote-label">Note</div>
+        <ul class="jnote-body"><li>A HashMap makes it easy to track how many times each character appears while scanning the string only once.</li></ul>
+      </div>
+    </div>
+    
+    <div class="jcard" id="java-26">
+      <div class="jcard-title">26. Check Harshad (Niven) Number</div>
+      <div class="jsection">
+        <div class="jlabel">Question</div>
+        <div class="jbody">Write a program to check whether a number is a Harshad (Niven) number or not.</div>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Algorithm</div>
+        <ol class="jalgo"><li>Read the number from the user.</li><li>Calculate the sum of its digits.</li><li>Check if the number is exactly divisible by the digit sum.</li><li>If divisible &rarr; Harshad number, else &rarr; not a Harshad number.</li></ol>
+      </div>
+      <div class="jsection">
+        <div class="jlabel">Code</div>
+        <pre class="jcode">import java.util.*;
+public class HarshadNumber {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter any number : ");
+        int n = sc.nextInt();
+        int temp = n, sum = 0;
+        while (temp &gt; 0) {
+            sum += temp % 10;
+            temp /= 10;
+        }
+        if (n % sum == 0)
+            System.out.println(n + " is a Harshad number");
+        else
+            System.out.println(n + " is not a Harshad number");
+    }
+}</pre>
+      </div>
+      <div class="jiobox">
+        <div><b>Input</b> &nbsp;21</div>
+        <div><b>Output</b> 21 is a Harshad number</div>
+      </div>
+      <div class="jcomplexity">
+        <span>Time: O(d) where d = number of digits</span><span>Space: O(1)</span>
+      </div>
+      <div class="jnote">
+        <div class="jnote-label">Note</div>
+        <ul class="jnote-body"><li>A Harshad (or Niven) number is divisible by the sum of its own digits.</li><li>For example, 21 is a Harshad number because 21 / (2+1) = 7.</li></ul>
+      </div>
+    </div>
+    </div>
+</section>
+
+<section id="easy" class="section">
+  <div class="section-head">
+    <span class="section-chip easy-chip">PART 2 &middot; DSA &middot; EASY</span>
+    <p>Hints are hidden by default &mdash; hover (desktop) or tap (mobile) the hint box to reveal it.</p>
+  </div>
+  <div class="dgrid">
+    <div class="dcard easy">
+      <div class="dcard-top">
+        <div class="dtitle">Two Sum</div>
+        <span class="freq"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Google, Adobe, Microsoft</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given an array of integers and a target value, find the indices of the two numbers that add up to the target.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>You need to spot a pair of elements in the array whose sum equals the given target, and return their positions.</p>
+      </div>
+      <div class="hint-wrap easy" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Checking every pair takes O(n²). Instead, walk through once and store each number's index in a hash map — at every step check if the ‘complement’ you need is already in the map.</div>
+      </div>
+    </div>
+    
+    <div class="dcard easy">
+      <div class="dcard-top">
+        <div class="dtitle">Reverse a Linked List</div>
+        <span class="freq"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Microsoft, Adobe</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given the head of a singly linked list, reverse the list and return the new head.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Flip the direction of every ‘next’ pointer so the last node becomes the first.</p>
+      </div>
+      <div class="hint-wrap easy" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Keep three pointers — previous, current and next — and re-point current's next to previous as you move down the list in a single pass.</div>
+      </div>
+    </div>
+    
+    <div class="dcard easy">
+      <div class="dcard-top">
+        <div class="dtitle">Valid Parentheses</div>
+        <span class="freq"><span class="dot on"></span><span class="dot on"></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Google, Meta</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given a string containing only the brackets ( ) { } [ ], determine whether the brackets are properly closed and nested.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Check that every opening bracket has a matching closing bracket in the correct order.</p>
+      </div>
+      <div class="hint-wrap easy" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">A stack is perfect here: push opening brackets, and when a closing bracket appears, check whether it matches whatever is on top of the stack.</div>
+      </div>
+    </div>
+    
+    <div class="dcard easy">
+      <div class="dcard-top">
+        <div class="dtitle">Maximum Subarray (Kadane's Algorithm)</div>
+        <span class="freq"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span>
+      </div>
+      <div class="dcompanies">Microsoft, Amazon, LinkedIn</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given an integer array, find the contiguous subarray with the largest sum and return that sum.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Among all possible continuous slices of the array, find the one whose elements add up to the biggest total.</p>
+      </div>
+      <div class="hint-wrap easy" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">At every index decide whether to extend the running subarray or start fresh from the current element — track a ‘current sum’ and a ‘best sum so far’.</div>
+      </div>
+    </div>
+    
+    <div class="dcard easy">
+      <div class="dcard-top">
+        <div class="dtitle">Merge Two Sorted Lists</div>
+        <span class="freq"><span class="dot on"></span><span class="dot on"></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Microsoft</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given the heads of two sorted linked lists, merge them into one sorted linked list.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Combine both lists into a single list that stays sorted, reusing the existing nodes.</p>
+      </div>
+      <div class="hint-wrap easy" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Use a dummy head node and repeatedly attach whichever of the two current nodes is smaller, then advance that list's pointer.</div>
+      </div>
+    </div>
+    
+    <div class="dcard easy">
+      <div class="dcard-top">
+        <div class="dtitle">Best Time to Buy and Sell Stock</div>
+        <span class="freq"><span class="dot on"></span><span class="dot on"></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Meta</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given an array where each element is a stock's price on a given day, find the maximum profit from one buy and one later sell.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Pick a day to buy and a later day to sell so that the profit is as large as possible.</p>
+      </div>
+      <div class="hint-wrap easy" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Track the lowest price seen so far while scanning left to right, and at each day compute the profit if you sold today.</div>
+      </div>
+    </div>
+    
+    <div class="dcard easy">
+      <div class="dcard-top">
+        <div class="dtitle">Contains Duplicate</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Google</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given an integer array, determine whether any value appears at least twice.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>A simple check for whether the array has any repeated element.</p>
+      </div>
+      <div class="hint-wrap easy" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">A hash set lets you check ‘have I seen this before?’ in O(1) time as you scan the array once.</div>
+      </div>
+    </div>
+    
+    <div class="dcard easy">
+      <div class="dcard-top">
+        <div class="dtitle">Valid Anagram</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Bloomberg</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given two strings, determine whether the second is an anagram of the first.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Check whether both strings use exactly the same letters with the same frequency, just rearranged.</p>
+      </div>
+      <div class="hint-wrap easy" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Count character frequencies with a hash map (or a 26-length array for lowercase letters) and compare the two counts.</div>
+      </div>
+    </div>
+    
+    <div class="dcard easy">
+      <div class="dcard-top">
+        <div class="dtitle">Move Zeroes</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Meta, Amazon</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given an array, move all zeroes to the end while keeping the relative order of the non-zero elements, in place.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Rearrange the array so non-zero numbers keep their order at the front and all zeroes settle at the back, without extra space.</p>
+      </div>
+      <div class="hint-wrap easy" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Use a ‘write pointer’ that tracks where the next non-zero element should go, and swap as you scan through the array.</div>
+      </div>
+    </div>
+    
+    <div class="dcard easy">
+      <div class="dcard-top">
+        <div class="dtitle">Climbing Stairs</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Adobe, Amazon</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>You can climb 1 or 2 steps at a time. Given n stairs, count how many distinct ways there are to reach the top.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Count the number of unique step combinations of 1s and 2s that add up to n.</p>
+      </div>
+      <div class="hint-wrap easy" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">The number of ways to reach step n equals the ways to reach step n-1 plus the ways to reach step n-2 — this is the Fibonacci sequence in disguise.</div>
+      </div>
+    </div>
+    
+    <div class="dcard easy">
+      <div class="dcard-top">
+        <div class="dtitle">Single Number</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Airbnb</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given a non-empty array where every element appears twice except for one, find the single element that does not repeat.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Identify the one value in the array that has no matching pair.</p>
+      </div>
+      <div class="hint-wrap easy" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">XOR-ing a number with itself gives zero, and XOR is order-independent — XOR every element together and the pairs will cancel out, leaving the unique number.</div>
+      </div>
+    </div>
+    
+    <div class="dcard easy">
+      <div class="dcard-top">
+        <div class="dtitle">Missing Number</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Microsoft</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given an array containing n distinct numbers taken from the range 0 to n, find the one number missing from the range.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Figure out which single number from 0..n is not present in the array.</p>
+      </div>
+      <div class="hint-wrap easy" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">The sum of 0..n has a simple formula. Subtract the actual array sum from that expected sum to get the missing number — or XOR the same way as Single Number.</div>
+      </div>
+    </div>
+    
+    <div class="dcard easy">
+      <div class="dcard-top">
+        <div class="dtitle">Majority Element</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Adobe</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given an array of size n, find the element that appears more than n/2 times.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Find the value that occurs in more than half of the array's positions.</p>
+      </div>
+      <div class="hint-wrap easy" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">The Boyer-Moore Voting technique keeps a running candidate and a counter — increment on a match, decrement otherwise, and swap candidates when the counter hits zero.</div>
+      </div>
+    </div>
+    
+    <div class="dcard easy">
+      <div class="dcard-top">
+        <div class="dtitle">Palindrome Linked List</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Meta</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given the head of a singly linked list, determine whether it reads the same forwards and backwards.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Check whether the sequence of values in the linked list is a palindrome.</p>
+      </div>
+      <div class="hint-wrap easy" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Use a slow/fast pointer to find the middle, reverse the second half in place, then compare it against the first half node by node.</div>
+      </div>
+    </div>
+    
+    <div class="dcard easy">
+      <div class="dcard-top">
+        <div class="dtitle">Symmetric Tree</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Bloomberg</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given the root of a binary tree, check whether it is a mirror of itself around its centre.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Determine whether the left and right subtrees of the root are mirror images of each other.</p>
+      </div>
+      <div class="hint-wrap easy" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Write a helper that compares two subtrees at a time, checking that their outer children match and their inner children match, recursively.</div>
+      </div>
+    </div>
+    
+    <div class="dcard easy">
+      <div class="dcard-top">
+        <div class="dtitle">Maximum Depth of Binary Tree</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, LinkedIn</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given the root of a binary tree, find its maximum depth (the number of nodes along the longest path from root to a leaf).</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Find how many levels deep the tree goes at its deepest point.</p>
+      </div>
+      <div class="hint-wrap easy" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">The depth of a tree is 1 plus the larger of the depths of its two subtrees — a simple recursive definition, or track depth explicitly with a BFS.</div>
+      </div>
+    </div>
+    
+    <div class="dcard easy">
+      <div class="dcard-top">
+        <div class="dtitle">Intersection of Two Linked Lists</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Microsoft</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given the heads of two singly linked lists, find the node at which the two lists intersect, or return null if they don't.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Find the exact node where two linked lists start sharing the same tail.</p>
+      </div>
+      <div class="hint-wrap easy" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Walk both lists with two pointers; when one reaches the end, redirect it to the other list's head. The pointers meet exactly at the intersection after at most two passes.</div>
+      </div>
+    </div>
+    
+    <div class="dcard easy">
+      <div class="dcard-top">
+        <div class="dtitle">First Unique Character in a String</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Bloomberg</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given a string, find the index of its first character that does not repeat, or -1 if none exists.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Find the earliest character in the string that appears exactly once overall.</p>
+      </div>
+      <div class="hint-wrap easy" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Count the frequency of every character in one pass with a hash map, then scan the string again and return the first character whose count is 1.</div>
+      </div>
+    </div>
+    
+    <div class="dcard easy">
+      <div class="dcard-top">
+        <div class="dtitle">Implement strStr() (Substring Search)</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Meta, Amazon</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given two strings, haystack and needle, return the index of the first occurrence of needle in haystack, or -1 if it isn't there.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Find where one string first appears inside another.</p>
+      </div>
+      <div class="hint-wrap easy" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">A naive sliding comparison works in O(n·m); for something faster, look into the KMP algorithm's failure function to avoid re-checking matched characters.</div>
+      </div>
+    </div>
+    
+    <div class="dcard easy">
+      <div class="dcard-top">
+        <div class="dtitle">Plus One</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Google, Amazon</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given a non-empty array of digits representing a non-negative integer, add one to the number and return the resulting digit array.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Simulate adding 1 to a large number that's stored digit by digit, handling any carry correctly.</p>
+      </div>
+      <div class="hint-wrap easy" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Start from the last digit and add the carry; if a digit becomes 10, set it to 0 and carry 1 to the next position — if the carry survives past the first digit, prepend a new 1.</div>
+      </div>
+    </div>
+    </div>
+</section>
+
+<section id="medium" class="section">
+  <div class="section-head">
+    <span class="section-chip medium-chip">PART 2 &middot; DSA &middot; MEDIUM</span>
+  </div>
+  <div class="dgrid">
+    <div class="dcard medium">
+      <div class="dcard-top">
+        <div class="dtitle">Product of Array Except Self</div>
+        <span class="freq"><span class="dot on"></span><span class="dot on"></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Meta</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given an array, return a new array where each element is the product of all the other elements, without using division.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>For every index, multiply together all the numbers except the one at that index — without dividing.</p>
+      </div>
+      <div class="hint-wrap medium" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Build a ‘prefix product’ array from the left and a ‘suffix product’ array from the right, then multiply the two for each index.</div>
+      </div>
+    </div>
+    
+    <div class="dcard medium">
+      <div class="dcard-top">
+        <div class="dtitle">Merge Intervals</div>
+        <span class="freq"><span class="dot on"></span><span class="dot on"></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Meta, Google</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given a collection of intervals, merge all overlapping intervals and return the result.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Combine any intervals that overlap or touch into single, larger intervals.</p>
+      </div>
+      <div class="hint-wrap medium" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Sort the intervals by their start value first — once sorted, you only ever need to compare each interval with the last one you've merged.</div>
+      </div>
+    </div>
+    
+    <div class="dcard medium">
+      <div class="dcard-top">
+        <div class="dtitle">Longest Substring Without Repeating Characters</div>
+        <span class="freq"><span class="dot on"></span><span class="dot on"></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Bloomberg</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given a string, find the length of the longest substring that has no repeating characters.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Find the longest ‘window’ of consecutive characters in the string where every character is unique.</p>
+      </div>
+      <div class="hint-wrap medium" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Use a sliding window with two pointers and a hash set to track characters currently inside the window; shrink from the left whenever a duplicate appears.</div>
+      </div>
+    </div>
+    
+    <div class="dcard medium">
+      <div class="dcard-top">
+        <div class="dtitle">3Sum</div>
+        <span class="freq"><span class="dot on"></span><span class="dot on"></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Microsoft, Meta</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given an integer array, find all unique triplets of elements that sum to zero.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Find every combination of three different array elements whose total is exactly zero, without duplicate triplets.</p>
+      </div>
+      <div class="hint-wrap medium" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Sort the array first, fix one element, then use two pointers moving inward from both ends of the remaining array to find matching pairs.</div>
+      </div>
+    </div>
+    
+    <div class="dcard medium">
+      <div class="dcard-top">
+        <div class="dtitle">Group Anagrams</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Uber</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given an array of strings, group the strings that are anagrams of each other.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Bucket the words so each group contains only words made of the exact same letters.</p>
+      </div>
+      <div class="hint-wrap medium" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Use a canonical form of each word (like its sorted letters) as a hash map key, and append the word to that key's list.</div>
+      </div>
+    </div>
+    
+    <div class="dcard medium">
+      <div class="dcard-top">
+        <div class="dtitle">Rotate Array</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Microsoft, Amazon</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given an array, rotate it to the right by k steps, in place.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Shift every element k positions to the right, wrapping the overflow back to the start.</p>
+      </div>
+      <div class="hint-wrap medium" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Reversing the whole array, then reversing the first k elements and the remaining n-k elements separately, produces the rotation using O(1) extra space.</div>
+      </div>
+    </div>
+    
+    <div class="dcard medium">
+      <div class="dcard-top">
+        <div class="dtitle">Kth Largest Element in an Array</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Meta</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given an integer array and an integer k, find the kth largest element in sorted order.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Without fully sorting, determine what value would sit in the kth position if the array were sorted in descending order.</p>
+      </div>
+      <div class="hint-wrap medium" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">A min-heap of size k (or the Quickselect partitioning technique) avoids a full O(n log n) sort.</div>
+      </div>
+    </div>
+    
+    <div class="dcard medium">
+      <div class="dcard-top">
+        <div class="dtitle">Binary Tree Level Order Traversal</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Microsoft</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given the root of a binary tree, return the values of its nodes level by level, left to right.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Group the node values by how far they are from the root, in the order they appear at each depth.</p>
+      </div>
+      <div class="hint-wrap medium" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">A queue-based breadth-first search naturally processes the tree one level at a time — track how many nodes belong to the current level before dequeuing them.</div>
+      </div>
+    </div>
+    
+    <div class="dcard medium">
+      <div class="dcard-top">
+        <div class="dtitle">Course Schedule</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Google, Amazon</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given a number of courses and a list of prerequisite pairs, determine whether it is possible to finish all the courses.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Decide whether the prerequisite relationships form a cycle — if they do, the courses can never all be completed.</p>
+      </div>
+      <div class="hint-wrap medium" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Model courses and prerequisites as a directed graph, then run a topological sort or a DFS that tracks nodes in the current recursion path to detect a cycle.</div>
+      </div>
+    </div>
+    
+    <div class="dcard medium">
+      <div class="dcard-top">
+        <div class="dtitle">Number of Islands</div>
+        <span class="freq"><span class="dot on"></span><span class="dot on"></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Google, Microsoft</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given a 2D grid of land and water cells, count the number of islands.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Count how many separate connected groups of land cells exist, where connections are horizontal or vertical only.</p>
+      </div>
+      <div class="hint-wrap medium" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">When you find an unvisited land cell, run a DFS or BFS to ‘sink’ the whole connected island by marking its cells visited, counting how many times you start a new search.</div>
+      </div>
+    </div>
+    
+    <div class="dcard medium">
+      <div class="dcard-top">
+        <div class="dtitle">Container With Most Water</div>
+        <span class="freq"><span class="dot on"></span><span class="dot on"></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Google</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given an array of heights representing vertical lines, find two lines that together with the x-axis form the container holding the most water.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Pick two lines so the rectangle of water between them (limited by the shorter line) is as large as possible.</p>
+      </div>
+      <div class="hint-wrap medium" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Start with two pointers at both ends; the water is bounded by the shorter line, so move the pointer at the shorter line inward, since moving the taller one can never help.</div>
+      </div>
+    </div>
+    
+    <div class="dcard medium">
+      <div class="dcard-top">
+        <div class="dtitle">Search in Rotated Sorted Array</div>
+        <span class="freq"><span class="dot on"></span><span class="dot on"></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Microsoft</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given a sorted array that has been rotated at an unknown pivot, and a target value, find the target's index in O(log n).</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Locate a value inside an array that was sorted but then rotated, without scanning it linearly.</p>
+      </div>
+      <div class="hint-wrap medium" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">At each step of a binary search, one half of the array is guaranteed to still be normally sorted — figure out which half that is and check if the target lies within it.</div>
+      </div>
+    </div>
+    
+    <div class="dcard medium">
+      <div class="dcard-top">
+        <div class="dtitle">Spiral Matrix</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Microsoft</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given an m x n matrix, return all its elements in spiral order.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Read the matrix's values by walking around its outer boundary inward, layer by layer.</p>
+      </div>
+      <div class="hint-wrap medium" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Track four boundaries — top, bottom, left, right — and shrink them inward after traversing each side of the current layer.</div>
+      </div>
+    </div>
+    
+    <div class="dcard medium">
+      <div class="dcard-top">
+        <div class="dtitle">Validate Binary Search Tree</div>
+        <span class="freq"><span class="dot on"></span><span class="dot on"></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Microsoft</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given the root of a binary tree, determine whether it is a valid binary search tree.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Check that every node's value falls strictly between the allowed lower and upper bounds set by its ancestors.</p>
+      </div>
+      <div class="hint-wrap medium" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Pass down a valid (min, max) range as you recurse; a node must fall inside that range, and it narrows the range for its own children.</div>
+      </div>
+    </div>
+    
+    <div class="dcard medium">
+      <div class="dcard-top">
+        <div class="dtitle">Construct Binary Tree from Preorder and Inorder Traversal</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Microsoft</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given the preorder and inorder traversal arrays of a binary tree, reconstruct the tree.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Rebuild the exact original tree structure from two of its traversal sequences.</p>
+      </div>
+      <div class="hint-wrap medium" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">The first element of preorder is always the root; find that value in inorder to know how many nodes belong to the left subtree, then recurse on both sides.</div>
+      </div>
+    </div>
+    
+    <div class="dcard medium">
+      <div class="dcard-top">
+        <div class="dtitle">Coin Change</div>
+        <span class="freq"><span class="dot on"></span><span class="dot on"></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Google</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given coin denominations and a target amount, find the fewest coins needed to make that amount (or -1 if impossible).</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Find the minimum number of coins that add up exactly to the target amount.</p>
+      </div>
+      <div class="hint-wrap medium" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Build a DP array where dp[i] is the minimum coins needed for amount i, using dp[i] = min(dp[i - coin] + 1) over all coins that fit.</div>
+      </div>
+    </div>
+    
+    <div class="dcard medium">
+      <div class="dcard-top">
+        <div class="dtitle">Subsets</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Meta</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given an array of unique integers, return all possible subsets (the power set).</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>List every possible combination of the array's elements, including the empty set and the full set.</p>
+      </div>
+      <div class="hint-wrap medium" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">At each element you have two choices — include it or skip it — backtracking through both choices naturally generates every subset.</div>
+      </div>
+    </div>
+    
+    <div class="dcard medium">
+      <div class="dcard-top">
+        <div class="dtitle">Permutations</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Microsoft</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given an array of distinct integers, return all possible permutations.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>List every possible ordering of the given elements.</p>
+      </div>
+      <div class="hint-wrap medium" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Backtrack by swapping elements into the current position one at a time, recursing on the remainder, then swapping back before trying the next option.</div>
+      </div>
+    </div>
+    
+    <div class="dcard medium">
+      <div class="dcard-top">
+        <div class="dtitle">Top K Frequent Elements</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Meta</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given an integer array and an integer k, return the k most frequent elements.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Find the k values that appear most often in the array.</p>
+      </div>
+      <div class="hint-wrap medium" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Count frequencies with a hash map, then use a min-heap of size k (or bucket sort by frequency) to pull out the top k without a full sort.</div>
+      </div>
+    </div>
+    
+    <div class="dcard medium">
+      <div class="dcard-top">
+        <div class="dtitle">Clone Graph</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Google</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given a reference to a node in a connected undirected graph, return a deep copy of the entire graph.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Recreate the whole graph structure with brand-new node objects that mirror the original connections exactly.</p>
+      </div>
+      <div class="hint-wrap medium" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Use a hash map from original nodes to their clones, and DFS or BFS through the graph, creating a clone the first time each node is visited and reusing it afterward.</div>
+      </div>
+    </div>
+    </div>
+</section>
+
+<section id="hard" class="section">
+  <div class="section-head">
+    <span class="section-chip hard-chip">PART 2 &middot; DSA &middot; HARD</span>
+  </div>
+  <div class="dgrid">
+    <div class="dcard hard">
+      <div class="dcard-top">
+        <div class="dtitle">Median of Two Sorted Arrays</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Google, Microsoft</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given two sorted arrays, find the median of the combined data set.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Find the middle value of both arrays merged together, without necessarily merging them, in better than linear time.</p>
+      </div>
+      <div class="hint-wrap hard" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Binary search on the smaller array to find a partition point where the left halves of both arrays together hold exactly half of all the elements.</div>
+      </div>
+    </div>
+    
+    <div class="dcard hard">
+      <div class="dcard-top">
+        <div class="dtitle">Trapping Rain Water</div>
+        <span class="freq"><span class="dot on"></span><span class="dot on"></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Google, Goldman Sachs</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given an elevation map made of bars of different heights, compute how much rainwater it can trap after it rains.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>For each position, figure out how much water would sit above it, bounded by the tallest bars to its left and right.</p>
+      </div>
+      <div class="hint-wrap hard" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">The water trapped at any position depends on the minimum of the tallest bar to its left and the tallest bar to its right — a two-pointer sweep can track both in a single pass.</div>
+      </div>
+    </div>
+    
+    <div class="dcard hard">
+      <div class="dcard-top">
+        <div class="dtitle">Word Ladder</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, LinkedIn</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given a start word, an end word and a dictionary, find the length of the shortest transformation sequence that changes one letter at a time, with every intermediate word valid.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Find the fewest single-letter swaps needed to turn the start word into the end word, only passing through dictionary words.</p>
+      </div>
+      <div class="hint-wrap hard" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Treat each word as a graph node connected to words that differ by exactly one letter, then run a breadth-first search from the start word.</div>
+      </div>
+    </div>
+    
+    <div class="dcard hard">
+      <div class="dcard-top">
+        <div class="dtitle">Longest Increasing Subsequence</div>
+        <span class="freq"><span class="dot on"></span><span class="dot on"></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Google, Microsoft</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given an integer array, find the length of the longest strictly increasing subsequence.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Find the longest sequence of elements (not necessarily contiguous) that keeps increasing in value while preserving their original order.</p>
+      </div>
+      <div class="hint-wrap hard" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">A DP array where dp[i] is the LIS ending at index i gives an O(n²) solution; for O(n log n), maintain a growing ‘tails’ array and binary search for where each new element belongs.</div>
+      </div>
+    </div>
+    
+    <div class="dcard hard">
+      <div class="dcard-top">
+        <div class="dtitle">Serialize and Deserialize Binary Tree</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Meta</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Design an algorithm to convert a binary tree into a string, and convert that string back into the original tree.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Come up with an encoding scheme that captures the full shape and values of the tree so it can be rebuilt exactly.</p>
+      </div>
+      <div class="hint-wrap hard" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">A pre-order traversal that explicitly records ‘null’ markers for missing children lets you reconstruct the tree recursively from that same sequence.</div>
+      </div>
+    </div>
+    
+    <div class="dcard hard">
+      <div class="dcard-top">
+        <div class="dtitle">LRU Cache</div>
+        <span class="freq"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Microsoft, Google</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Design a data structure that supports get and put operations in O(1), evicting the least recently used item whenever capacity is exceeded.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Build a fixed-size cache that always knows which item was used longest ago, so it can be the first one removed when space runs out.</p>
+      </div>
+      <div class="hint-wrap hard" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Combine a hash map (for O(1) lookup) with a doubly linked list (to track usage order), moving a node to the front on every access.</div>
+      </div>
+    </div>
+    
+    <div class="dcard hard">
+      <div class="dcard-top">
+        <div class="dtitle">N-Queens</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Microsoft, Amazon</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Place n queens on an n×n chessboard so that no two queens attack each other, and return all distinct solutions.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Find every arrangement of n queens where no two share a row, column, or diagonal.</p>
+      </div>
+      <div class="hint-wrap hard" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Place queens row by row using backtracking, keeping track of which columns and diagonals are already occupied so invalid placements can be skipped early.</div>
+      </div>
+    </div>
+    
+    <div class="dcard hard">
+      <div class="dcard-top">
+        <div class="dtitle">Edit Distance</div>
+        <span class="freq"><span class="dot on"></span><span class="dot on"></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Google, Amazon</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given two strings, find the minimum number of insert, delete, or replace operations needed to convert one into the other.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Find the cheapest sequence of single-character edits that transforms the first word into the second.</p>
+      </div>
+      <div class="hint-wrap hard" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Build a 2D DP table where dp[i][j] is the edit distance between the first i and j characters of each string, branching on whether the current characters match.</div>
+      </div>
+    </div>
+    
+    <div class="dcard hard">
+      <div class="dcard-top">
+        <div class="dtitle">Merge k Sorted Lists</div>
+        <span class="freq"><span class="dot on"></span><span class="dot on"></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Google, Meta</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given k sorted linked lists, merge them all into one sorted linked list.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Combine all k lists into a single, fully sorted list.</p>
+      </div>
+      <div class="hint-wrap hard" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">A min-heap holding the current front node of each list lets you always pull the smallest available node in O(log k) time.</div>
+      </div>
+    </div>
+    
+    <div class="dcard hard">
+      <div class="dcard-top">
+        <div class="dtitle">Word Break</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Google, Meta</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given a string and a dictionary of words, determine whether the string can be segmented into a space-separated sequence of dictionary words.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Check whether the string can be fully split into pieces that all exist in the given word list.</p>
+      </div>
+      <div class="hint-wrap hard" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Use DP where dp[i] is true if the prefix ending at i can be segmented — check every j &lt; i where dp[j] is true and the substring from j to i is a dictionary word.</div>
+      </div>
+    </div>
+    
+    <div class="dcard hard">
+      <div class="dcard-top">
+        <div class="dtitle">Regular Expression Matching</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Google, Meta</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given a string and a pattern with support for '.' and '*', implement regular expression matching that covers the entire input string.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Determine whether the whole string matches the pattern, where '.' matches any single character and '*' matches zero or more of the preceding character.</p>
+      </div>
+      <div class="hint-wrap hard" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Build a 2D DP table where dp[i][j] tracks whether the first i characters of the string match the first j characters of the pattern, handling '*' as a special two-case transition.</div>
+      </div>
+    </div>
+    
+    <div class="dcard hard">
+      <div class="dcard-top">
+        <div class="dtitle">Sliding Window Maximum</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Google</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given an array and a window size k, return the maximum value in every sliding window of size k as it moves across the array.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>For every position of a size-k window sliding left to right, report the largest value currently inside it.</p>
+      </div>
+      <div class="hint-wrap hard" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Use a deque that stores indices in decreasing order of value — pop smaller elements from the back before pushing a new one, and drop indices from the front once they fall outside the window.</div>
+      </div>
+    </div>
+    
+    <div class="dcard hard">
+      <div class="dcard-top">
+        <div class="dtitle">Longest Valid Parentheses</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Google</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given a string containing only '(' and ')', find the length of the longest valid (well-formed) parentheses substring.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Find the longest contiguous stretch of the string that forms correctly matched parentheses.</p>
+      </div>
+      <div class="hint-wrap hard" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">A stack storing indices works well here — push indices of unmatched characters, and measure the gap between the current index and the new stack top whenever a match closes.</div>
+      </div>
+    </div>
+    
+    <div class="dcard hard">
+      <div class="dcard-top">
+        <div class="dtitle">Largest Rectangle in Histogram</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Google</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given an array representing the heights of histogram bars of width 1, find the area of the largest rectangle that fits within the histogram.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Find the biggest rectangular area that can be formed using consecutive bars, where the rectangle's height is limited by the shortest bar it spans.</p>
+      </div>
+      <div class="hint-wrap hard" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Use a monotonic increasing stack of bar indices — when a shorter bar appears, pop and compute the area for each taller bar that can no longer extend rightward.</div>
+      </div>
+    </div>
+    
+    <div class="dcard hard">
+      <div class="dcard-top">
+        <div class="dtitle">Minimum Window Substring</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Meta</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given two strings s and t, find the smallest substring of s that contains every character of t (including duplicates).</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Find the shortest window in s that has enough of every character required by t.</p>
+      </div>
+      <div class="hint-wrap hard" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">A sliding window with two pointers and a character-count map works well: expand the right edge until the window is valid, then shrink from the left to find the minimum valid window.</div>
+      </div>
+    </div>
+    
+    <div class="dcard hard">
+      <div class="dcard-top">
+        <div class="dtitle">Alien Dictionary</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Google</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given a list of words sorted according to the rules of an unknown alien alphabet, determine a valid ordering of the alphabet's letters.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Figure out the character ordering rules implied by a sorted word list from an unfamiliar alphabet.</p>
+      </div>
+      <div class="hint-wrap hard" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Compare each pair of adjacent words to find the first differing letter, which gives you a 'comes before' edge — then topologically sort the resulting letter graph.</div>
+      </div>
+    </div>
+    
+    <div class="dcard hard">
+      <div class="dcard-top">
+        <div class="dtitle">Word Search II</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Google</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given a 2D board of letters and a list of words, find all words from the list that can be formed by tracing adjacent cells on the board.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Find every word from the list that can be spelled out by moving between neighbouring letters on the grid without reusing a cell.</p>
+      </div>
+      <div class="hint-wrap hard" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Build a Trie from the word list first, then DFS from every cell, following the Trie so you can stop early whenever no word starts with the letters seen so far.</div>
+      </div>
+    </div>
+    
+    <div class="dcard hard">
+      <div class="dcard-top">
+        <div class="dtitle">Best Time to Buy and Sell Stock III</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Microsoft</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given stock prices for each day, find the maximum profit achievable with at most two buy-sell transactions.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Maximise total profit when you're allowed to buy and sell up to two separate times, without overlapping transactions.</p>
+      </div>
+      <div class="hint-wrap hard" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Track four running values as you scan once: the best profit after the first buy, after the first sell, after the second buy, and after the second sell — each depends only on the previous one.</div>
+      </div>
+    </div>
+    
+    <div class="dcard hard">
+      <div class="dcard-top">
+        <div class="dtitle">Basic Calculator</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Google, Meta</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Implement a basic calculator that evaluates a string expression containing integers, '+', '-', parentheses, and spaces.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Parse and correctly evaluate an arithmetic expression string, respecting nested parentheses.</p>
+      </div>
+      <div class="hint-wrap hard" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Use a stack to remember the running result and sign whenever you enter a new parenthesis, then restore and combine them when that parenthesis closes.</div>
+      </div>
+    </div>
+    
+    <div class="dcard hard">
+      <div class="dcard-top">
+        <div class="dtitle">Maximal Rectangle</div>
+        <span class="freq"><span class="dot on"></span><span class="dot "></span><span class="dot "></span></span>
+      </div>
+      <div class="dcompanies">Amazon, Google</div>
+      <div class="dblock">
+        <span class="dlabel">Question</span>
+        <p>Given a 2D binary matrix filled with 0s and 1s, find the area of the largest rectangle containing only 1s.</p>
+      </div>
+      <div class="dblock">
+        <span class="dlabel">What it asks</span>
+        <p>Find the biggest all-1s rectangle hidden inside the matrix.</p>
+      </div>
+      <div class="hint-wrap hard" tabindex="0" onclick="this.classList.toggle('revealed')">
+        <div class="hint-flag">
+          <span class="hint-flag-label">Hint</span>
+          <span class="hint-flag-cta">hover or tap to reveal</span>
+        </div>
+        <div class="hint-text">Treat each row as the base of a histogram, adding up consecutive 1s column-wise from the rows above, then reuse the Largest Rectangle in Histogram technique on every row.</div>
+      </div>
+    </div>
+    </div>
+</section>
+
+<footer class="pagefoot">Java Programs &amp; DSA Handbook &nbsp;&middot;&nbsp; Compiled by Vaibhav Singh</footer>
+
+</body>
+</html>
