@@ -48,11 +48,11 @@ Placement-Preparation-Notes/
 | Subject | Status |
 |----------|:------:|
 | 🚀 DevOps | ✅ Available |
-| 💻 Data Structures & Algorithms | ⏳ Coming Soon |
+| 💻 Data Structures & Algorithms | ✅ Available |
 | 🗄️ DBMS | ⏳ Coming Soon |
 | 🌐 Computer Networks | ⏳ Coming Soon |
 | ⚙️ Operating System | ⏳ Coming Soon |
-| ☕ Object-Oriented Programming | ⏳ Coming Soon |
+| ☕ System Design | ✅ Available |
 | 🛢️ SQL | ⏳ Coming Soon |
 | 🧠 Aptitude | ⏳ Coming Soon |
 | 🎤 Interview Questions | ⏳ Coming Soon |
