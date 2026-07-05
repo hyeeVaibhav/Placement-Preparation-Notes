@@ -51,7 +51,7 @@ Placement-Preparation-Notes/
 | 🚀 DevOps | ✅ Available |
 | 💻 Data Structures & Algorithms | ✅ Available |
 | 🗄️ DBMS | ⏳ Coming Soon |
-| 🌐 Computer Networks | ⏳ Coming Soon |
+| 🌐 Computer Networks | ✅ Available |
 | ⚙️ Operating System | ⏳ Coming Soon |
 | ☕ System Design | ✅ Available |
 | 🛢️ SQL | ⏳ Coming Soon |
