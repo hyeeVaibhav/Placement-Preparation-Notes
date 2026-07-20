@@ -121,7 +121,7 @@ Placement-Preparation-Notes/
 
 ---
 
-## 🤝 Contributions
+## 🤝 Contributionss
 
 This repository is primarily maintained for my personal learning and revision.
 
