@@ -21,7 +21,7 @@ The purpose of this repository is to:
 - 📚 Keep all my notes organized in one place
 - 🎯 Make revision quick and efficient
 - 💻 Track my learning journey
-- 🤝 Share useful resources with fellow students
+- 🤝 Share useful resources with fellow studentss..
 
 ---
 
