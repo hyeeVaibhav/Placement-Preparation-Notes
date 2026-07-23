@@ -6,7 +6,7 @@
 
 A curated collection of my notes, revision material, and study resources created while preparing for software engineering placements and technical interviews.
 
-⭐ **This repository is continuously updated as I learn new topicssss.**
+⭐ **This repository is continuously updated as I learn new topics.**
 
 </div>
 
